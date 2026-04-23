@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Integrity | Healthcare & Life Sciences</title>
+    <meta name="description" content="Experiment tracking dashboard for Gene Therapy research.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <nav class="nav-menu">
+                    <button class="nav-item" id="nav-home" title="Home">
+                        <i class="ph-fill ph-house"></i>
+                    </button>
+                    <button class="nav-item" id="nav-docs" title="Documents">
+                        <i class="ph-fill ph-files"></i>
+                    </button>
+                    <button class="nav-item active" id="nav-lab" title="Experiments">
+                        <i class="ph-fill ph-test-tube"></i>
+                    </button>
+                    <button class="nav-item" id="nav-bookmark" title="Bookmarks">
+                        <i class="ph-fill ph-bookmark"></i>
+                    </button>
+                    <button class="nav-item" id="nav-settings" title="Settings">
+                        <i class="ph-fill ph-gear"></i>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="logo-area">
+                    <div class="dna-logo">
+                        <i class="ph-fill ph-dna dna-icon"></i>
+                    </div>
+                    <h1>Gene Therapy Company</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" title="Profile">
+                        <i class="ph-fill ph-user-circle"></i>
+                    </button>
+                    <button class="icon-btn" title="Notifications">
+                        <i class="ph-fill ph-bell-ringing"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Title & Actions -->
+            <div class="page-title-row">
+                <div class="title-text">
+                    <h2>Lab Experiment</h2>
+                    <p>Enter the results from the experiment</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
+                    <button class="btn btn-primary" id="save-btn">Save</button>
+                </div>
+            </div>
+
+            <!-- Error Log (Hidden by default) -->
+            <div id="error-log" class="error-log-container" style="display: none;">
+                <div class="error-header">
+                    <span class="col-err">Error Details</span>
+                    <span class="col-loc">Cell Location</span>
+                    <span class="col-act">Quick Action</span>
+                </div>
+                <div id="error-list" class="error-list">
+                    <!-- Error items will be injected here -->
+                </div>
+                <div class="error-footer">
+                    <div class="total-errors">Found error: <span id="error-count">0</span></div>
+                    <div class="resolved-stat">Resolved - <span id="resolved-count">0/5</span></div>
+                </div>
+            </div>
+
+            <!-- Table Container -->
+            <div class="table-card">
+                <div class="table-scroll-container">
+                    <table id="experiment-table">
+                        <thead>
+                            <tr>
+                                <th class="sticky-col">Serial number</th>
+                                <th>Column 2</th>
+                                <th>Column 3</th>
+                                <th>Column 4</th>
+                                <th>Column 5</th>
+                                <th>Column 6</th>
+                                <th>Column 7</th>
+                                <th>Column 8</th>
+                                <th>Column 9</th>
+                                <th>Column 10</th>
+                                <th>Column 11</th>
+                                <th>Column 12</th>
+                                <th>Column 13</th>
+                                <th>Column 14</th>
+                                <th>Column 15</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Rows will be injected by script -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="success-icon-wrapper">
+                <i class="ph ph-check-circle modal-success-icon"></i>
+                <div class="sparkle s1"></div>
+                <div class="sparkle s2"></div>
+                <div class="sparkle s3"></div>
+                <div class="sparkle s4"></div>
+                <div class="sparkle s5"></div>
+                <div class="sparkle s6"></div>
+                <div class="sparkle s7"></div>
+                <div class="sparkle s8"></div>
+            </div>
+            <h2>Your entry saved successfully</h2>
+        </div>
+    </div>
+
+    <!-- Documents Modal -->
+    <div id="docs-modal" class="modal-overlay">
+        <div class="modal-content docs-modal-content">
+            <button class="close-modal" id="close-docs-modal">
+            </button>
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="background">Scenario</button>
+                <button class="tab-btn" data-tab="problem">Frictions</button>
+                <button class="tab-btn" data-tab="solution">Outcome</button>
+            </div>
+            <div class="tab-content-container">
+                <div id="background" class="tab-pane active">
+                    <h3>What set this problem in motion?</h3>
+                    <p>Sara is a Lab Technician who works at a Gene Therapy company. She is responsible for receiving
+                        samples and their manifests. She inspects the samples that come in, their details, their
+                        condition, and accepts or rejects the samples based on clearly defined criteria. Sara then tries
+                        to reconcile any sample discrepancies and missing information, or sends a rejection notice to
+                        the sample submitter, as needed.</p>
+                    <ul class="feature-list">
+                        <li><b>User Persona:</b> Sara, (Lab Technician)</li>
+                        <li><b>Primary Task:</b> Receives gene therapy samples and enters them into the system.</li>
+                        <li><b>User Goal:</b> Inspect details against strict criteria and flags or rejects.</li>
+                    </ul>
+                </div>
+                <div id="problem" class="tab-pane">
+                    <h3>What wasn’t working and why?</h3>
+                    <p>Data integrity is the key to success at her work, but efficiency is also important when handling
+                        massive amounts of data. She just entered 100s of rows of data into a table but apparently,
+                        there’re some errors in the data and she can not continue saving the data. Without guided
+                        resolution, a single cell error compromises the efficiency of the entire 100-row dataset.</p>
+                    <ul class="feature-list">
+                        <li>Invalid random data was entered in the table at row 25, 40, 72, 85 and 98 unintentionally.
+                        </li>
+                        <li>Until fixing the error, she is not able to save the data table.</li>
+                    </ul>
+                </div>
+                <div id="solution" class="tab-pane">
+                    <h3>What improved as a result?</h3>
+                    <p>The integrated Experiment Dashboard provides a high-fidelity interface for real-time data
+                        capture. By implementing these safeguards, we expect to reduce data entry errors by 95% and
+                        shorten the research-to-analysis lifecycle significantly.</p>
+                    <ul class="feature-list">
+                        <li>Automated validation with visual cues</li>
+                        <li>Instant error logging with fix suggestions</li>
+                        <li>Sticky table headers for large datasets</li>
+                        <li>Real-time error status & feedback</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="proto-btn">Explore Live Demo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">Changes saved successfully!</div>
+
+    <!-- Tooltip -->
+    <div id="cell-tooltip" class="cell-tooltip">Tooltip suggestion here</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
