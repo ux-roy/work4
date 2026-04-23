@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 </head>
 
@@ -122,6 +121,9 @@
     <!-- Success Modal -->
     <div id="success-modal" class="modal-overlay">
         <div class="modal-content">
+            <button class="close-modal" id="close-success-modal">
+                <i class="ph ph-x"></i>
+            </button>
             <div class="success-icon-wrapper">
                 <i class="ph ph-check-circle modal-success-icon"></i>
                 <div class="sparkle s1"></div>
@@ -141,6 +143,7 @@
     <div id="docs-modal" class="modal-overlay">
         <div class="modal-content docs-modal-content">
             <button class="close-modal" id="close-docs-modal">
+                <i class="ph ph-x"></i>
             </button>
             <div class="modal-tabs">
                 <button class="tab-btn active" data-tab="background">Scenario</button>
@@ -185,9 +188,6 @@
                         <li>Real-time error status & feedback</li>
                     </ul>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" id="proto-btn">Explore Live Demo</button>
             </div>
         </div>
     </div>

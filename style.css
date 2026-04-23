@@ -529,6 +529,7 @@ td input:focus {
 }
 
 .modal-content {
+    position: relative;
     background: white;
     padding: 60px 80px;
     border-radius: 24px;
